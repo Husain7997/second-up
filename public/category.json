@@ -1,0 +1,17 @@
+[
+    {
+        "_id": "1",
+        "name": "BEDROOM",
+        "img":"https://www.frontgate.com/wcsstore/images/Frontgate/_media/Homepage/images/Jan23/1.6/2up_HB.jpg"
+    },
+    {
+        "_id": "2",
+        "name": "LIVING ROOM",
+        "img":"https://www.frontgate.com/wcsstore/images/Frontgate/_media/Homepage/images/Dec22/12.25/DS.jpg"
+    },
+    {
+        "_id": "3",
+        "name": "DINING ROOM",
+        "img":"https://www.frontgate.com/wcsstore/images/Frontgate/_media/Homepage/images/Jan23/1.6/2up_ODF-Guide.jpg"
+    }
+]

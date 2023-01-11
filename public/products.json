@@ -1,0 +1,58 @@
+[
+    {
+        "_id": "1",
+        "category": "BEDROOM",
+        "name": "Whitby Canopy Bed",
+        "price": "500",
+        "img":"https://akamai-scene7.frontgate.com/is/image/frontgate/T_WithoutZoom?$SLI_LargeGrid$&$src=167657_alt1&$SLI_LargeGrid$&defaultImage=167657_main"
+    },
+    {
+        "_id": "2",
+        "category": "BEDROOM",
+        "name":"Beauvier French Cane Bed",
+        "price": "300",
+        "img":"https://akamai-scene7.frontgate.com/is/image/frontgate/T_WithoutZoom?$SLI_LargeGrid$&$src=149069_alt1&$SLI_LargeGrid$&defaultImage=149069_main"
+    },
+    {
+        "_id": "3",
+        "category": "DINING ROOM",
+        "name":"Matteo Dining Chair",
+        "price": "800",
+        "img":"https://akamai-scene7.frontgate.com/is/image/frontgate/T_WithoutZoom?$SLI_LargeGrid$&$src=167073_alt1&$SLI_LargeGrid$&defaultImage=167073_main"
+    },
+    {
+        "_id": "4",
+        "category": "BEDROOM",
+        "name":"Etienne 3-Drawer Chest",
+        "price": "800",
+        "img":"https://akamai-scene7.frontgate.com/is/image/frontgate/T_WithoutZoom?$SLI_LargeGrid$&$src=159024_alt1&$SLI_LargeGrid$&defaultImage=159024_main"
+    },
+    {
+        "_id": "5",
+        "category": "DINING ROOM",
+        "name":"Alden Expandable Rectangular Dining Table",
+        "price": "800",
+        "img":"https://akamai-scene7.frontgate.com/is/image/frontgate/T_WithoutZoom?$SLI_LargeGrid$&$src=159849_alt1&$SLI_LargeGrid$&defaultImage=159849_main"
+    },
+    {
+        "_id": "6",
+        "category": "LIVING ROOM",
+        "name":"Lucille Tufted Chaise",
+        "price": "800",
+        "img":"https://akamai-scene7.frontgate.com/is/image/frontgate/T_WithoutZoom?$SLI_LargeGrid$&$src=169661_alt1&$SLI_LargeGrid$&defaultImage=169661_main"
+    },
+    {
+        "_id": "7",
+        "category": "LIVING ROOM",
+        "name":"Lucille Tufted Chaise",
+        "price": "800",
+        "img":"https://akamai-scene7.frontgate.com/is/image/frontgate/T_WithoutZoom?$SLI_LargeGrid$&$src=169661_alt1&$SLI_LargeGrid$&defaultImage=169661_main"
+    },
+    {
+        "_id": "8",
+        "category": "LIVING ROOM",
+        "name":"Tivoli Small Square Side Table",
+        "price": "800",
+        "img":"https://akamai-scene7.frontgate.com/is/image/frontgate/T_WithoutZoom?$SLI_LargeGrid$&$src=173197_alt1&$SLI_LargeGrid$&defaultImage=173197_main"
+    }
+]
