@@ -32,7 +32,7 @@ const MyProduct = (id) => {
     fetch(`http://localhost:5000/product/${id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ status: 'ok' })
+      body: JSON.stringify({ status: 'abaileble' })
     })
     .then(response => response.JSON())
     .then
