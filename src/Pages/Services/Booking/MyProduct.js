@@ -43,13 +43,13 @@ const MyProduct = (id) => {
 
 
   useEffect(() => {
-    fetch(`http://localhost:5000/MyProduct?email=${user.email}`)
+    fetch(`http://localhost:5000/myProduct?email=${user?.email}`)
       .then(response => response.json())
       .then(data => setMyProduct(data))
     if (MyProduct == null) {
       return 'No review were Added'
     }
-  }, [user?.email])
+}, [])
 
   return (
     <div>
@@ -68,7 +68,7 @@ const MyProduct = (id) => {
           <tbody>
 
             {
-              MyProduct.map(review => <ProductTable key={review._id} handleEdit={handleEdit} handleDelete={handleDelete} review={review}></ProductTable>)
+              MyProduct.map(product => <ProductTable key={product._id} handleEdit={handleEdit} handleDelete={handleDelete} product={product}></ProductTable>)
             }
           </tbody>
         </table>

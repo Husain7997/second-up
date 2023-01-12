@@ -3,7 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 import logo from '../../../assets/logo.ico';
 import { GoogleAuthProvider } from 'firebase/auth';
-import { Result } from 'postcss';
+// import { Result } from 'postcss';
 const Login = () => {
   
   const { googleLogin, login, user } = useContext(AuthContext)
@@ -37,18 +37,21 @@ const Login = () => {
       .than((result) => {
         const user = result.user;
         console.log(user);
-        navigate(from, { replace: true });
+        // navigate(from, { replace: true });
         
       })
       .catch((err) => { console.log(err) })
   }
-
+  if(user?.accessToken){
+    
+    navigate(from, { replace: true })
+  }
   return (
     <div className="hero min-h-screen bg-base-200">
       <div className="hero-content flex-col lg:flex-row-reverse">
         <div className="text-center lg:text-left">
           <h1 className="text-5xl font-bold">Login </h1>
-          <img className="rounded mt-4 w-1/2" src={logo} />
+          <img alt='' className="rounded mt-4 w-1/2" src={logo} />
         </div>
         <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl ">
 

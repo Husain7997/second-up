@@ -1,10 +1,11 @@
 import React from 'react';
 
-const ProductTable = ({Product, handleDelete, handleEdit}) => {
+const ProductTable = ({product, handleDelete, handleEdit}) => {
     
-    const {name,rating,service,textarea,imgURL, _id, status}=Product;
+    const {title,rating,description,picture, _id, prize
+,      status, email}=product;
 
-   console.log(_id)
+   console.log(product);
     return (
         <div>
              <tr className="flex-nowrap">
@@ -19,21 +20,21 @@ const ProductTable = ({Product, handleDelete, handleEdit}) => {
           <div className="flex items-center space-x-3">
             <div className="avatar">
               <div className="mask mask-squircle w-12 h-12">
-                <img src={imgURL} alt="Avatar Tailwind CSS Component" />
+                <img src={picture} alt="Avatar Tailwind CSS Component" />
               </div>
             </div>
             <div>
-              <div className="font-bold">{name}</div>
+              <div className="font-bold">{title}</div>
               <div className="text-sm opacity-50">rating: {rating}</div>
             </div>
           </div>
         </td>
         <td className="flex flex-nowrap">
-         <p>{textarea}</p>
+         <p>{description}</p>
           <br/>
          
         </td>
-       <td className='break-normal' ><p style={{width:'0px'}}>{service?.slice(0,20)}...</p></td>
+       <td className='break-normal' ><p style={{width:'0px'}}>{email?.slice(0,20)}...</p></td>
        
       </tr>
         </div>

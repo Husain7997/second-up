@@ -1,18 +1,25 @@
 import React, { useContext } from 'react';
-import { Link} from 'react-router-dom';
+import { Link, useLocation, useNavigate} from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 import logo from '../../../assets/logo.ico'
 
 const Navbar = () => {
   const {user, logOut}=useContext(AuthContext)
+  const location = useLocation();
+  const navigate = useNavigate();
+  const from = location.state?.from?.pathname || '/';
 
   const handleLogOut=()=>{
     logOut()
-    .then(()=>{
-      console.log()
-    })
-    .catch(()=>{})
+    // .then(()=>{
+    //   if(!user?.accessToken){
+    //    navigate(from, { replace: true })
+    //   }
+    // })
+    // .catch(()=>{})
   }
+
+  
     return (
         <>
         <div className="navbar bg-base-100">

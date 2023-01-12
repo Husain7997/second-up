@@ -1,21 +1,25 @@
 import React, { useContext } from 'react';
+import { Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 
 const AddAProduct = () => {
     const { user } = useContext(AuthContext);
-
+    const location = useLocation();
+    const navigate = useNavigate();
+    const from = location.state?.from?.pathname || '/myProduct';
     const handleAddAProduct = (event)=>{
         event.preventDefault();
         const form= event.target;
         const title= form.title.value;
         const imgURL= form.imgURL.value;
+        const email= form.email.value;
         const prize= form.prize.value;
         const rating= form.rating.value;
         const textarea= form.textarea.value;
         console.log(title, prize, rating, textarea);
 
         const AddAProduct={
-            
+            email:email,
             title:title,
             picture:imgURL,
             prize,
@@ -33,6 +37,7 @@ const AddAProduct = () => {
             if (data.acknowledged) {
               form.reset();
               alert('NEW Product Added successfully')
+              navigate(from, { replace: true } || '/myProduct')
             }
           })
           .catch(err=>console.log(err))
@@ -44,6 +49,7 @@ const AddAProduct = () => {
                 <div className="card-body grid grid-cols-1 md:grid-cols-2">
 
                     <input type="text" required name='title' placeholder="title" className="input input-bordered" />
+                    <input type="email" required name='email' defaultValue={user?.email} placeholder="email" className="input input-bordered" />
                     <input type="text" required name='imgURL' placeholder="imgURL" className="input input-bordered" />
                     <input type="text" required name='prize' placeholder="prize" className="input input-bordered" />
                     <input type="text" required name='rating' placeholder="rating" className="input input-bordered" />
