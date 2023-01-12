@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 
-const AddService = () => {
+const AddAProduct = () => {
     const { user } = useContext(AuthContext);
 
-    const handleAddService = (event)=>{
+    const handleAddAProduct = (event)=>{
         event.preventDefault();
         const form= event.target;
         const title= form.title.value;
@@ -14,7 +14,7 @@ const AddService = () => {
         const textarea= form.textarea.value;
         console.log(title, prize, rating, textarea);
 
-        const addService={
+        const AddAProduct={
             
             title:title,
             picture:imgURL,
@@ -22,23 +22,23 @@ const AddService = () => {
             rating:rating,
             description:textarea,
           }
-          fetch(`https://trust-kitchens-server.vercel.app/addService`, {
+          fetch(`http://localhost:5000/AddAProduct`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(addService)
+            body: JSON.stringify(AddAProduct)
           })
           .then(res=>res.json())
           .then(data=>{
             console.log(data);
             if (data.acknowledged) {
               form.reset();
-              alert('NEW Service successfully')
+              alert('NEW Product Added successfully')
             }
           })
           .catch(err=>console.log(err))
     }
     return (
-        <form onSubmit={handleAddService} className="text-center mb-10" >
+        <form onSubmit={handleAddAProduct} className="text-center mb-10" >
             <h2 className="text-2xl font-bold">Add a New Service</h2>
             <div className="card w-full ">
                 <div className="card-body grid grid-cols-1 md:grid-cols-2">
@@ -64,4 +64,4 @@ const AddService = () => {
     );
 };
 
-export default AddService;
+export default AddAProduct;

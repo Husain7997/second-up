@@ -1,27 +1,27 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
-import Booking from '../Review/Booking';
-import ReviewTable from './ReviewTable';
+import Booking from '../Product/Booking';
+import ProductTable from './ProductTable';
 
 
-const Review = ({ service }) => {
+const Product = ({ service }) => {
   const { user } = useContext(AuthContext)
-  // const [reviewData, setReviewData] = useState([]);
+  // const [ProductData, setProductData] = useState([]);
   // const data = useLoaderData();
-  // setReviewData(data)
+  // setProductData(data)
   const [data, setData]=useState([]);
 
   useEffect(()=>{
-   fetch(`https://trust-kitchens-server.vercel.app/review`)
+   fetch(`http://localhost:5000/Product`)
    .then(res=>res.json())
    .then (data=> setData(data))
   },[])
 
   const handleDelete = id => {
-    const proceed = window.confirm('are you confirm for delete this review');
+    const proceed = window.confirm('are you confirm for delete this Product');
     if (proceed) {
-      fetch(`https://trust-kitchens-server.vercel.app/review/${id}`, {
+      fetch(`http://localhost:5000/Product/${id}`, {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' },
       })
@@ -29,7 +29,7 @@ const Review = ({ service }) => {
         .then(data => {
           console.log(data)
           if (data.deletedCount === 1) {
-            alert("Successfully deleted one review.");
+            alert("Successfully deleted one Product.");
             
           }
         });
@@ -39,7 +39,7 @@ const Review = ({ service }) => {
   console.log(data)
   return (
     <div>
-<p className="text-center font-bold text-3xl m-6">Service Review</p>
+<p className="text-center font-bold text-3xl m-6">Service Product</p>
       <div className="overflow-x-auto w-full">
         <table className="table w-full flex-nowrap">
 
@@ -47,18 +47,18 @@ const Review = ({ service }) => {
             <tr className="flex flex-nowrap justify-evenly">
 
               <th >Name </th>
-              <th>Review </th>
+              <th>Product </th>
               <th>title of service</th>
 
             </tr>
           </thead>
           <tbody>
            
-           {data?.length!==0? data.map(review => <ReviewTable
-            key={review._id}
+           {data?.length!==0? data.map(Product => <ProductTable
+            key={Product._id}
             handleDelete={handleDelete}
-            review={review}
-          ></ReviewTable>): <p className="text-center text-3xl m-6">No Review Added</p>}
+            Product={Product}
+          ></ProductTable>): <p className="text-center text-3xl m-6">No Product Added</p>}
           
           </tbody>
         </table>
@@ -68,4 +68,4 @@ const Review = ({ service }) => {
   );
 };
 
-export default Review;
+export default Product;

@@ -1,17 +1,17 @@
 import React, { useContext, useEffect, useState } from 'react';
-
+import ProductTable from './ProductTable'
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
-import ReviewTable from './ReviewTable';
 
-const Review = (id) => {
+
+const MyProduct = (id) => {
   const { user } = useContext(AuthContext);
-  const [myReview, setMyReview] = useState([]);
+  const [MyProduct, setMyProduct] = useState([]);
 
 
   const handleDelete = id => {
     const proceed = window.confirm('are you confirm for delete this review');
     if (proceed) {
-      fetch(`https://trust-kitchens-server.vercel.app/review/${id}`, {
+      fetch(`http://localhost:5000/product/${id}`, {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' },
       })
@@ -20,16 +20,16 @@ const Review = (id) => {
           console.log(data)
           if (data.deletedCount == 1) {
             alert("Successfully deleted one review.")
-            const remaining = myReview.filter(rv=>rv._id !== id);
+            const remaining = MyProduct.filter(rv=>rv._id !== id);
             const presentReview =[...remaining];
-            setMyReview(presentReview)
+            setMyProduct(presentReview)
           }
         })
     }
   }
 
   const handleEdit = id => {
-    fetch(`https://trust-kitchens-server.vercel.app/review/${id}`, {
+    fetch(`http://localhost:5000/product/${id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ status: 'ok' })
@@ -43,10 +43,10 @@ const Review = (id) => {
 
 
   useEffect(() => {
-    fetch(`https://trust-kitchens-server.vercel.app/myreview?email=${user.email}`)
+    fetch(`http://localhost:5000/MyProduct?email=${user.email}`)
       .then(response => response.json())
-      .then(data => setMyReview(data))
-    if (myReview == null) {
+      .then(data => setMyProduct(data))
+    if (MyProduct == null) {
       return 'No review were Added'
     }
   }, [user?.email])
@@ -68,7 +68,7 @@ const Review = (id) => {
           <tbody>
 
             {
-              myReview.map(review => <ReviewTable key={review._id} handleEdit={handleEdit} handleDelete={handleDelete} review={review}></ReviewTable>)
+              MyProduct.map(review => <ProductTable key={review._id} handleEdit={handleEdit} handleDelete={handleDelete} review={review}></ProductTable>)
             }
           </tbody>
         </table>
@@ -80,4 +80,4 @@ const Review = (id) => {
   );
 };
 
-export default Review;
+export default MyProduct;

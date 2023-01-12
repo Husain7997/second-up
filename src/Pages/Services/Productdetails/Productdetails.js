@@ -15,7 +15,7 @@ const Productdetails = () => {
           <h2 >Prize: {price} </h2>
           <p>{category}</p>
           <div className="card-actions justify-end">
-            <Link to={`/booking/:${_id}`}><button  className="btn btn-primary">BOOK NOW</button></Link>
+            <Link to={`/booking/${_id}`}><button  className="btn btn-primary">BOOK NOW</button></Link>
           </div>
         </div>
      

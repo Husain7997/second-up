@@ -1,13 +1,16 @@
 import React, { useContext } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { useLoaderData, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 
 
-const Booking = ({   }) => {
+const Booking = () => {
 
   const productData= useLoaderData()
-console.log(productData)
   const {user}= useContext(AuthContext)
+  const location = useLocation();
+  const navigate = useNavigate();
+  const from = location.state?.from?.pathname || '/';
+
   const handleBooking = (event)=>{
     event.preventDefault();
     const form= event.target;
@@ -17,9 +20,11 @@ console.log(productData)
     const rating= form.rating.value;
     const textarea= form.textarea.value;
    
-    const review={
-      // id:service._id,
-      // title:service.title,
+    const Product={
+      id:productData._id,
+      title:productData.name,
+      price:productData.price,
+      ctegory:productData.category,
       name,
       imgURL,
       email,
@@ -31,14 +36,16 @@ console.log(productData)
     fetch(`http://localhost:5000/booking`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(review)
+      body: JSON.stringify(Product)
     })
     .then(res=>res.json())
     .then(data=>{
       console.log(data);
       if (data.acknowledged) {
         form.reset();
-        alert('review successfully')
+        alert('Product successfully')
+          navigate('/myProduct')
+        
       }
     })
     .catch(err=>console.log(err))
@@ -58,15 +65,18 @@ console.log(productData)
                 <div className="card-body grid grid-cols-1 md:grid-cols-2">
 
                   <input type="text" name='name' defaultValue={user?.displayName} placeholder="Name" className="input input-bordered" />
-                  <input type="text" name='imgURL' defaultValue={user?.photoURL} placeholder='your image URl' className="input input-bordered" />
-                  <input type="email" name='email' defaultValue={user?.email} placeholder="Your email address" className="input input-bordered" />
+                  <input type="text" name='imgURL' defaultValue={productData?.img} placeholder='product image URl' className="input input-bordered" />
+                  <input type="text" name='email' defaultValue={user?.email} placeholder="Your email address" className="input input-bordered" />
+                  <input type="text" name='email' defaultValue={productData?.name} placeholder="product name" className="input input-bordered" />
+                  <input type="text" name='email' defaultValue={productData?.price} placeholder="price" className="input input-bordered" />
+                  <input type="text" name='email' defaultValue={productData?.category} placeholder="category" className="input input-bordered" />
                   
                   <input type="text" name='rating' placeholder="rating" className="input input-bordered" />
                 </div>
               </div>
               <div className="indicator">
                 <div className="indicator-item indicator-bottom">
-                  <button button='submmit' className="btn btn-primary">Add Review</button>
+                  <button button='submmit' className="btn btn-primary">Add Product</button>
                 </div>
                 <div className="card border">
                   <div className="card-body">

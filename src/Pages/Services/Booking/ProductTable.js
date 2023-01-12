@@ -1,8 +1,8 @@
 import React from 'react';
 
-const ReviewTable = ({review, handleDelete, handleEdit}) => {
+const ProductTable = ({Product, handleDelete, handleEdit}) => {
     
-    const {name,rating,service,textarea,imgURL, _id, status}=review;
+    const {name,rating,service,textarea,imgURL, _id, status}=Product;
 
    console.log(_id)
     return (
@@ -40,4 +40,4 @@ const ReviewTable = ({review, handleDelete, handleEdit}) => {
     );
 };
 
-export default ReviewTable;
+export default ProductTable;
