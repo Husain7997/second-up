@@ -47,7 +47,7 @@ const Booking = () => {
     if (data.acknowledged) {
       form.reset();
       alert('Product Booked successfully')
-        navigate('/myProduct')
+        navigate('/')
       
     }
   })

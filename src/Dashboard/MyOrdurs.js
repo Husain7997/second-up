@@ -11,7 +11,7 @@ const MyProduct = (id) => {
   const handleDelete = id => {
     const proceed = window.confirm('are you confirm for delete this ');
     if (proceed) {
-      fetch(`http://localhost:5000/product/${id}`, {
+      fetch(`http://localhost:5000/myordars/${id}`, {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' },
       })
@@ -28,21 +28,11 @@ const MyProduct = (id) => {
     }
   }
 
-  const handleEdit = id => {
-    fetch(`http://localhost:5000/product/${id}`, {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ status: 'abaileble' })
-    })
-    .then(response => response.JSON())
-    .then(data=> {
-      console.log(data);
-    })
-  };
+  
 
 
   useEffect(() => {
-    fetch(`http://localhost:5000/myProduct?email=${user?.email}`)
+    fetch(`http://localhost:5000/myordars?email=${user?.email}`)
       .then(response => response.json())
       .then(data => setMyProduct(data))
     if (MyProduct == null) {
@@ -54,7 +44,7 @@ const MyProduct = (id) => {
     <div>
       <div className="overflow-x-auto w-full mt-10">
         <table className="table w-full">
-
+<h2 className="text-3xl">My Ordurs</h2>
           <thead>
             <tr className="flex flex-wrap justify-evenly">
 
@@ -68,7 +58,7 @@ const MyProduct = (id) => {
           <tbody>
 
             {
-              MyProduct.map(product => <ProductTable key={product._id} handleEdit={handleEdit} handleDelete={handleDelete} product={product}></ProductTable>)
+              MyProduct.map(product => <ProductTable key={product._id}  handleDelete={handleDelete} product={product}></ProductTable>)
             }
           </tbody>
         </table>

@@ -21,6 +21,7 @@ import Bayers from '../../../Dashboard/Bayers/Bayers';
 import Sellars from '../../../Dashboard/Sellars/Sellars';
 import AdminRoute from '../../Routs/PrivateRoute/AdminRoute'
 import Dashboard from '../../../Dashboard/Dashboard/Dashboard'
+import MyOrdurs from '../../../Dashboard/MyOrdurs'
 import Users from '../../../Dashboard/Users/Users';
 
 
@@ -96,6 +97,10 @@ const router = createBrowserRouter([
         {
             path: '/dashboard/bayer',
             element: <PrivateRoute><Bayers></Bayers></PrivateRoute>
+        },
+        {
+            path: '/dashboard/myordars',
+            element: <PrivateRoute><MyOrdurs></MyOrdurs></PrivateRoute>
         },
         {
             path: '/dashboard/myProduct',

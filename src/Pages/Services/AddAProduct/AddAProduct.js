@@ -44,10 +44,9 @@ const AddAProduct = () => {
     }
     return (
         <form onSubmit={handleAddAProduct} className="text-center mb-10" >
-            <h2 className="text-2xl font-bold">Add a New Service</h2>
+            <h2 className="text-2xl font-bold">Add a New Product</h2>
             <div className="card w-full ">
                 <div className="card-body grid grid-cols-1 md:grid-cols-2">
-
                     <input type="text" required name='title' placeholder="title" className="input input-bordered" />
                     <input type="email" required name='email' defaultValue={user?.email} placeholder="email" className="input input-bordered" />
                     <input type="text" required name='imgURL' placeholder="imgURL" className="input input-bordered" />
@@ -57,7 +56,7 @@ const AddAProduct = () => {
             </div>
             <div className="indicator">
                 <div className="indicator-item indicator-bottom">
-                    <button button='submmit' className="btn btn-primary">Add Service</button>
+                    <button button='submmit' className="btn btn-primary">Add Product</button>
                 </div>
                 <div className="card border">
                     <div className="card-body">
