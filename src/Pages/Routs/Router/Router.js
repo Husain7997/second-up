@@ -15,8 +15,13 @@ import Booking from '../../Services/Booking/Booking';
 import PrivateRoute from '../PrivateRoute/PrivateRoute';
 import Categories from '../../Categories/categories/Categories';
 import AddAProduct from '../../Services/AddAProduct/AddAProduct';
-import MyProduct from '../../Services/Booking/MyProduct';
-
+import MyProduct from '../../../Dashboard/MyProduct';
+import DashboardLayout from '../../Layout/DashboardLayout'
+import Bayers from '../../../Dashboard/Bayers/Bayers';
+import Sellars from '../../../Dashboard/Sellars/Sellars';
+import AdminRoute from '../../Routs/PrivateRoute/AdminRoute'
+import Dashboard from '../../../Dashboard/Dashboard/Dashboard'
+import Users from '../../../Dashboard/Users/Users';
 
 
 const router = createBrowserRouter([
@@ -33,10 +38,7 @@ const router = createBrowserRouter([
                 path: '/Furnitures',
                 element: <Products></Products>
             },
-            {
-                path: '/AddAProduct',
-                element: <PrivateRoute><AddAProduct></AddAProduct></PrivateRoute>
-            },
+            
             {
                 path: '/productdetails/:id',
                 element: <PrivateRoute><Productdetails></Productdetails></PrivateRoute>,
@@ -47,25 +49,13 @@ const router = createBrowserRouter([
                 element: <PrivateRoute><Categories></Categories></PrivateRoute>,
                 loader: ({ params }) => fetch(`http://localhost:5000/category/${params.name}`)
             },
-            {
-                path: '/myProduct',
-                element: <PrivateRoute><MyProduct></MyProduct></PrivateRoute>
-            },
+            
             {
                 path: '/booking/:id',
                 element: <PrivateRoute><Booking></Booking></PrivateRoute>,
                 loader: ({ params }) => fetch(`http://localhost:5000/booking/${params.id}`)
             },
-            // {
-            //     path: '/Product/:id',
-            //     element: <PrivateRoute><Product></Product></PrivateRoute>,
-            //     loader: ({ params }) => fetch(`https://trust-kitchens-server.vercel.app/Product/${params.id}`)
-            // },
-            // {
-            //     path: '/Product',
-            //     element: <PrivateRoute><Product></Product></PrivateRoute>,
-            //     loader: () => fetch(`https://trust-kitchens-server.vercel.app/Product}`)
-            // },
+            
             {
                 path: '/register',
                 element: <Register></Register>
@@ -78,6 +68,7 @@ const router = createBrowserRouter([
                 path: '/blogs',
                 element: <Blogs></Blogs>
             },
+            
             {
                 path: '*',
                 element: <NotFound></NotFound>
@@ -85,6 +76,36 @@ const router = createBrowserRouter([
 
         ]
 
-    }
+    },
+    {
+        path:'/dashboard',
+        element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
+        children:[
+        {
+            path:'/dashboard',
+        element: <Dashboard></Dashboard>
+        },
+        {
+            path: '/dashboard/addProduct',
+            element: <PrivateRoute><AddAProduct></AddAProduct></PrivateRoute>
+        },
+        {
+            path: '/dashboard/sellar',
+            element: <PrivateRoute><Sellars></Sellars></PrivateRoute>
+        },
+        {
+            path: '/dashboard/bayer',
+            element: <PrivateRoute><Bayers></Bayers></PrivateRoute>
+        },
+        {
+            path: '/dashboard/myProduct',
+            element: <PrivateRoute><MyProduct></MyProduct></PrivateRoute>
+        },
+        {
+            path:'/dashboard/users',
+            element: <AdminRoute><Users></Users></AdminRoute>
+        }
+        ]
+            }
 ])
 export default router;

@@ -1,20 +1,19 @@
 import React from 'react';
 
-const ProductTable = ({product, handleDelete, handleEdit}) => {
-    
-    const {title,rating,description,picture, _id, prize
-,      status, email}=product;
+const ProductTable = ({ product, handleDelete, handleEdit }) => {
 
-   console.log(product);
-    return (
-        <div>
-             <tr className="flex-nowrap">
-        
+  const { title, rating, description, picture, _id, price, status, email } = product;
+
+  console.log(product);
+  return (
+    <div>
+      <tr className="flex-wrap w-full">
+
         <th>
-          <button onClick={()=>handleDelete(_id)} className="btn btn-ghost btn-xs">Delete</button>
+          <button onClick={() => handleDelete(_id)} className="btn btn-ghost btn-xs">Delete</button>
         </th>
         <th>
-          <button onClick={()=>handleEdit(_id)}  className="btn btn-ghost btn-xs"> {status?status: 'Edit'}</button>
+          <button onClick={() => handleEdit(_id)} className="btn btn-ghost btn-xs"> {status ? status : 'Edit'}</button>
         </th>
         <td>
           <div className="flex items-center space-x-3">
@@ -30,15 +29,15 @@ const ProductTable = ({product, handleDelete, handleEdit}) => {
           </div>
         </td>
         <td className="flex flex-nowrap">
-         <p>{description}</p>
-          <br/>
-         
+          <p>{description}</p>
+          <br />
+
         </td>
-       <td className='break-normal' ><p style={{width:'0px'}}>{email?.slice(0,20)}...</p></td>
-       
+        <td className='break-normal' ><p style={{ width: '0px' }}>{email?.slice(0, 20)}...</p></td>
+
       </tr>
-        </div>
-    );
+    </div>
+  );
 };
 
 export default ProductTable;

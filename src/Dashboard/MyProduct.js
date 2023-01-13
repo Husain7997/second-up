@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
-import ProductTable from './ProductTable'
-import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
+import ProductTable from '../Pages/Services/Booking/ProductTable'
+import { AuthContext } from '../Pages/Context/AuthProvider/AuthProvider';
 
 
 const MyProduct = (id) => {
@@ -35,8 +35,7 @@ const MyProduct = (id) => {
       body: JSON.stringify({ status: 'abaileble' })
     })
     .then(response => response.JSON())
-    .then
-    (data=> {
+    .then(data=> {
       console.log(data);
     })
   };
@@ -47,7 +46,7 @@ const MyProduct = (id) => {
       .then(response => response.json())
       .then(data => setMyProduct(data))
     if (MyProduct == null) {
-      return 'No review were Added'
+      return 'No data were Added'
     }
 }, [])
 
@@ -57,11 +56,12 @@ const MyProduct = (id) => {
         <table className="table w-full">
 
           <thead>
-            <tr className="flex flex-nowrap justify-evenly">
+            <tr className="flex flex-wrap justify-evenly">
 
-              <th >Name </th>
+              {/* <th >Name </th>
+              
               <th>Review </th>
-              <th>title of service</th>
+              <th>title of service</th> */}
 
             </tr>
           </thead>

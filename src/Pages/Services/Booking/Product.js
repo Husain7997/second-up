@@ -35,8 +35,8 @@ const Product = ({ service }) => {
         });
     }
   }
-  // const { name, rating, title, textarea, imgURL } = data;
-  console.log(data)
+ 
+
   return (
     <div>
 <p className="text-center font-bold text-3xl m-6">Service Product</p>

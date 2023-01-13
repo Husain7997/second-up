@@ -11,14 +11,12 @@ const Navbar = () => {
 
   const handleLogOut=()=>{
     return logOut()
-   
     .then(()=>{
       navigate('/')
       if(!user?.accessToken){
        navigate(from, { replace: true })
       }
-    })
-        
+    })   
     .catch(()=>{})
   }
 
@@ -38,7 +36,8 @@ const Navbar = () => {
         <li><Link to='/blogs'>Blogs</Link></li></>
        {user?.uid? 
       <> <li><Link to='/myProduct'>My Products</Link></li>
-      <li><Link to='/AddAProduct'>Add Furniture</Link></li>
+    
+      <li><Link to='/dashboard'>DashBoard</Link></li>
    <p>{user.displayName}</p>
    <button onClick={handleLogOut} className="btn btn-active btn-ghost">Log Out</button></>
         :
@@ -55,7 +54,8 @@ const Navbar = () => {
         <li><Link to='/blogs'>Blogs</Link></li></>
        {user?.uid? 
       <> <li><Link to='/myProduct'>My Products</Link></li>
-      <li><Link to='/AddAProduct'>Add Furniture</Link></li>
+      
+      <li><Link to='/dashboard'>DashBoard</Link></li>
       <button onClick={handleLogOut} className="btn btn-active btn-ghost">Log Out</button>
 
    <p>{user?.displayName}</p></>

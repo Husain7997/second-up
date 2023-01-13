@@ -4,7 +4,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import logo from '../../../assets/logo.ico';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 import { useForm } from 'react-hook-form';
-// import { toast } from 'react-hot-toast';
+import { toast } from 'react-hot-toast';
 import UseToken from '../../../Components/hooks/useToken';
 
 const Register = () => {
@@ -22,9 +22,9 @@ const Register = () => {
     console.log(data);
     createUser(data.email, data.password)
       .then(result => {
-        // const user = result.user;
-        // console.log(user);
-        // toast('user create Successfully.')
+        const user = result.user;
+        console.log(user);
+        toast('user create Successfully.')
         const userInfo = {
           displayName: data.name
         }

@@ -6,6 +6,7 @@ const useAdmin = email => {
     const [isAdminLoading, setIsAdminLoading]=useState(true);
     
     useEffect(() => {
+        setIsAdminLoading(true)
         if (email) {
             fetch(`http://localhost:5000/users/admin/${email}`)
                 .then(response => response.json())

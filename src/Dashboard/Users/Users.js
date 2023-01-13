@@ -51,7 +51,8 @@ fetch(`http://localhost:5000/users/admin/${id}`,{
           <th>{i+1}</th>
           <td>{user.name}</td>
           <td>{user.email}</td>
-          <td>{user?.role!=='admin' && <button onClick={()=>handleMakeAdmin(user._id)} className="btn btn-xs btn-primary">Make Admin</button>}</td>
+         
+          <td>{  user?.role!=='admin' &&<button onClick={()=>handleMakeAdmin(user._id)} className="btn btn-xs btn-primary">Make Admin</button>}</td>
           <td><button className="btn btn-xs btn-denger">Delete</button></td>
         </tr>)
    }

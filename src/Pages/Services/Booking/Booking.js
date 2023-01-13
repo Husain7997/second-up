@@ -1,15 +1,16 @@
 import React, { useContext } from 'react';
-import { useLoaderData, useLocation, useNavigate } from 'react-router-dom';
+import { useLoaderData, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
 
 
 const Booking = () => {
 
   const productData= useLoaderData()
+  // console.log(productData)
   const {user}= useContext(AuthContext)
-  const location = useLocation();
+  
   const navigate = useNavigate();
-  const from = location.state?.from?.pathname || '/';
+  
 
   const handleBooking = (event)=>{
     event.preventDefault();
@@ -21,6 +22,7 @@ const Booking = () => {
     const textarea= form.textarea.value;
    
     const Product={
+      status:'booked',
       id:productData._id,
       title:productData.name,
       price:productData.price,
@@ -32,24 +34,28 @@ const Booking = () => {
       textarea
       
     }
-    // console.log(service._id)
-    fetch(`http://localhost:5000/booking`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(Product)
-    })
-    .then(res=>res.json())
-    .then(data=>{
-      console.log(data);
-      if (data.acknowledged) {
-        form.reset();
-        alert('Product successfully')
-          navigate('/myProduct')
-        
-      }
-    })
-    .catch(err=>console.log(err))
-}
+
+//  if (Product?.status !== 'available') {
+  fetch(`http://localhost:5000/booking/${productData._id}`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(Product)
+  })
+  .then(res=>res.json())
+  .then(data=>{
+    
+    if (data.acknowledged) {
+      form.reset();
+      alert('Product Booked successfully')
+        navigate('/myProduct')
+      
+    }
+  })
+  .catch(err=>console.log(err))
+ }
+// 
+
+
   return (
 
     <div className="hero min-h-screen bg-base-200">
@@ -58,8 +64,8 @@ const Booking = () => {
         <div className="card flex-shrink-0 w-full  shadow-2xl bg-base-100">
           <div className="card-body">
           
-
-            <form onSubmit={handleBooking} className="text-center mb-10" >
+        
+            <form  onSubmit={handleBooking}  className="text-center mb-10" >
             
               <div className="card w-full ">
                 <div className="card-body grid grid-cols-1 md:grid-cols-2">
@@ -67,16 +73,20 @@ const Booking = () => {
                   <input type="text" name='name' defaultValue={user?.displayName} placeholder="Name" className="input input-bordered" />
                   <input type="text" name='imgURL' defaultValue={productData?.img} placeholder='product image URl' className="input input-bordered" />
                   <input type="text" name='email' defaultValue={user?.email} placeholder="Your email address" className="input input-bordered" />
-                  <input type="text" name='email' defaultValue={productData?.name} placeholder="product name" className="input input-bordered" />
-                  <input type="text" name='email' defaultValue={productData?.price} placeholder="price" className="input input-bordered" />
-                  <input type="text" name='email' defaultValue={productData?.category} placeholder="category" className="input input-bordered" />
+                  <input type="text" name='name' defaultValue={productData?.name} placeholder="product name" className="input input-bordered" />
+                  <input type="text" name='price' defaultValue={productData?.price} placeholder="price" className="input input-bordered" />
+                  <input type="text" name='category' defaultValue={productData?.category} placeholder="category" className="input input-bordered" />
+                  <input type="text" name='status' defaultValue={productData?.status} placeholder="category" className="input input-bordered" />
                   
                   <input type="text" name='rating' placeholder="rating" className="input input-bordered" />
                 </div>
               </div>
               <div className="indicator">
                 <div className="indicator-item indicator-bottom">
-                  <button button='submmit' className="btn btn-primary">Add Product</button>
+                {
+                  productData?.status !== 'available'?<><p>already Booked</p></>:
+                  <button button='submmit' className="btn btn-primary">Submit</button>
+                }
                 </div>
                 <div className="card border">
                   <div className="card-body">
