@@ -6,7 +6,7 @@ const Sellars = () => {
     const {data:users=[], refetch}=useQuery({
         queryKey:[],
         queryFn:async()=>{
-            const res =await fetch(`http://localhost:5000/bayer`)
+            const res =await fetch(`https://seconde-up-server-husain7997.vercel.app/bayer`)
             const data = await res.json();
             return data;
         }
@@ -15,7 +15,7 @@ const Sellars = () => {
     const handleDelete = id => {
         const proceed = window.confirm('are you confirm for delete this ');
         if (proceed) {
-          fetch(`http://localhost:5000/users/${id}`, {
+          fetch(`https://seconde-up-server-husain7997.vercel.app/users/${id}`, {
             method: 'DELETE',
             headers: { 'Content-Type': 'application/json' },
           })

@@ -43,18 +43,18 @@ const router = createBrowserRouter([
             {
                 path: '/productdetails/:id',
                 element: <PrivateRoute><Productdetails></Productdetails></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/productdetails/${params.id}`)
+                loader: ({ params }) => fetch(`https://seconde-up-server-husain7997.vercel.app/productdetails/${params.id}`)
             },
             {
                 path: '/category/:name',
                 element: <PrivateRoute><Categories></Categories></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/category/${params.name}`)
+                loader: ({ params }) => fetch(`https://seconde-up-server-husain7997.vercel.app/category/${params.name}`)
             },
             
             {
                 path: '/booking/:id',
                 element: <PrivateRoute><Booking></Booking></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/booking/${params.id}`)
+                loader: ({ params }) => fetch(`https://seconde-up-server-husain7997.vercel.app/booking/${params.id}`)
             },
             
             {

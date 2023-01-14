@@ -52,7 +52,7 @@ const AddAProduct = () => {
             location: data.location
         }
 
-        fetch(`http://localhost:5000/AddAProduct`, {
+        fetch(`https://seconde-up-server-husain7997.vercel.app/AddAProduct`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(AddAProduct)

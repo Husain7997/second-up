@@ -13,7 +13,7 @@ const Product = ({ service }) => {
   const [data, setData]=useState([]);
 
   useEffect(()=>{
-   fetch(`http://localhost:5000/Product`)
+   fetch(`https://seconde-up-server-husain7997.vercel.app/Product`)
    .then(res=>res.json())
    .then (data=> setData(data))
   },[])
@@ -21,7 +21,7 @@ const Product = ({ service }) => {
   const handleDelete = id => {
     const proceed = window.confirm('are you confirm for delete this Product');
     if (proceed) {
-      fetch(`http://localhost:5000/Product/${id}`, {
+      fetch(`https://seconde-up-server-husain7997.vercel.app/Product/${id}`, {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' },
       })

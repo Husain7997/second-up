@@ -48,7 +48,7 @@ const Register = () => {
   const saveUser = (name, email, usertype) => {
     const user = { name, email, usertype };
     console.log(user);
-    fetch('http://localhost:5000/users', {
+    fetch('https://seconde-up-server-husain7997.vercel.app/users', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

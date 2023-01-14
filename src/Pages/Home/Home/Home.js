@@ -21,7 +21,7 @@ useEffect(() => {
 }, [])
 
   useEffect(() => {
-    const url = `http://localhost:5000?size=${3}`;
+    const url = `https://seconde-up-server-husain7997.vercel.app?size=${3}`;
     fetch(url)
       .then(response => response.json())
       .then(data => {
@@ -32,7 +32,7 @@ useEffect(() => {
 
   
 //   const handleCategory = (name) => {
-//     fetch(`http://localhost:5000/category/${name}`)
+//     fetch(`https://seconde-up-server-husain7997.vercel.app/category/${name}`)
 //         .then(response => response.json())
 //         .then(data => setCategorydata(data))
 // }

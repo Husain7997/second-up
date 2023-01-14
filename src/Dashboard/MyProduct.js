@@ -11,7 +11,7 @@ const MyProduct = (id) => {
   const handleDelete = id => {
     const proceed = window.confirm('are you confirm for delete this ');
     if (proceed) {
-      fetch(`http://localhost:5000/product/${id}`, {
+      fetch(`https://seconde-up-server-husain7997.vercel.app/product/${id}`, {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' },
       })
@@ -29,7 +29,7 @@ const MyProduct = (id) => {
   }
 
   const handleEdit = id => {
-    fetch(`http://localhost:5000/product/${id}`, {
+    fetch(`https://seconde-up-server-husain7997.vercel.app/product/${id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ status: 'abaileble' })
@@ -42,7 +42,7 @@ const MyProduct = (id) => {
 
 
   useEffect(() => {
-    fetch(`http://localhost:5000/myProduct?email=${user?.email}`)
+    fetch(`https://seconde-up-server-husain7997.vercel.app/myProduct?email=${user?.email}`)
       .then(response => response.json())
       .then(data => setMyProduct(data))
     if (MyProduct == null) {

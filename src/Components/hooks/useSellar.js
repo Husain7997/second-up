@@ -8,7 +8,7 @@ const useSellar = email => {
     useEffect(() => {
         setIsSellarLoading(true)
         if (email) {
-            fetch(`http://localhost:5000/users/sellar/${email}`)
+            fetch(`https://seconde-up-server-husain7997.vercel.app/users/sellar/${email}`)
                 .then(response => response.json())
                 .then(data => {
                     console.log(data);

@@ -36,7 +36,7 @@ const Booking = () => {
     }
 
 //  if (Product?.status !== 'available') {
-  fetch(`http://localhost:5000/booking/${productData._id}`, {
+  fetch(`https://seconde-up-server-husain7997.vercel.app/booking/${productData._id}`, {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(Product)

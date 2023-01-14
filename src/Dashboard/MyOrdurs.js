@@ -11,7 +11,7 @@ const MyProduct = (id) => {
   const handleDelete = id => {
     const proceed = window.confirm('are you confirm for delete this ');
     if (proceed) {
-      fetch(`http://localhost:5000/myordars/${id}`, {
+      fetch(`https://seconde-up-server-husain7997.vercel.app/myordars/${id}`, {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' },
       })
@@ -32,7 +32,7 @@ const MyProduct = (id) => {
 
 
   useEffect(() => {
-    fetch(`http://localhost:5000/myordars?email=${user?.email}`)
+    fetch(`https://seconde-up-server-husain7997.vercel.app/myordars?email=${user?.email}`)
       .then(response => response.json())
       .then(data => setMyProduct(data))
     if (MyProduct == null) {
